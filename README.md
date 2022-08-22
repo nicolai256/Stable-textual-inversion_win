@@ -14,7 +14,7 @@ new commands are
 
 training
 ```
-python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD_checkpoint_path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 
+python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 
 ```
 
 merge trained models together
@@ -24,12 +24,12 @@ python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/
 
 txt2img + textual inversion
 ```
-python scripts/txt2img.py --ddim_eta 0.0 --n_samples 2 --n_iter 2 --scale 10.0 --ddim_steps 50 --embedding_path "/path/to/trained/embedding.pt" --ckpt "SD_checkpoint_path" --prompt "a photo of keyword"
+python scripts/txt2img.py --ddim_eta 0.0 --n_samples 2 --n_iter 2 --scale 10.0 --ddim_steps 50 --embedding_path "/path/to/trained/embedding.pt" --ckpt "SD/checkpoint/path" --prompt "a photo of keyword"
 ```
 
 img2img + textual inversion
 ```
-python scripts/img2img.py --ddim_eta 0.0 --n_samples 2 --n_iter 2 --scale 10.0 --ddim_steps 50 --embedding_path "/path/to/trained/embedding.pt" --ckpt "SD_checkpoint_path" --prompt "a photo of keyword" --initimg "C:/path/to/init/image" --strength 0.2
+python scripts/img2img.py --ddim_eta 0.0 --n_samples 2 --n_iter 2 --scale 10.0 --ddim_steps 50 --embedding_path "/path/to/trained/embedding.pt" --ckpt "SD/checkpoint/path" --prompt "a photo of keyword" --initimg "C:/path/to/init/image" --strength 0.2
 ```
 
 # An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion

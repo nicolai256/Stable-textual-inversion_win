@@ -1,6 +1,11 @@
 # windows version of the repo 
 
 # added support for img2img + textual inversion
+start with installing stable diffusion dependencies
+```
+conda env create -f environment.yaml
+conda activate ldm
+```
 
 you need to install a couple extra things on top of stable diffusion env for this to work
 ```

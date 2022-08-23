@@ -33,6 +33,7 @@ python scripts/img2img.py --ddim_eta 0.0 --n_samples 2 --n_iter 2 --scale 10.0 -
 ```
 # colab notebook
 https://colab.research.google.com/drive/13aQSuDNP9qIjWqiQsGJ7-750Ee5Rh3Zq
+# 
 
 # An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion
 

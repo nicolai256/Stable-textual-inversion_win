@@ -112,6 +112,14 @@ if __name__ == "__main__":
         "--embedding_path", 
         type=str, 
         help="Path to a pre-trained embedding manager checkpoint")
+        
+    parser.add_argument(
+        "--precision",
+        type=str,
+        help="evaluate at this precision",
+        choices=["full", "autocast"],
+        default="autocast"
+    )
 
     opt = parser.parse_args()
 

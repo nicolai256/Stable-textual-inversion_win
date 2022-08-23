@@ -2,6 +2,12 @@
 
 # added support for img2img + textual inversion
 start with installing stable diffusion dependencies
+## changelog:
+- [x] added text weights
+- [x] added support for windows
+- [x] added support for img2img + textual inversion
+
+
 ```
 conda env create -f environment.yaml
 conda activate ldm

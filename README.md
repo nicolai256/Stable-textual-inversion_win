@@ -29,7 +29,7 @@ python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/
 
 txt2img + textual inversion (make sure u add a * to the end of ur keyword)
 ```
-python scripts/txt2img.py --ddim_eta 0.0 --n_samples 2 --n_iter 2 --scale 10.0 --ddim_steps 50 --embedding_path "/path/to/trained/embedding.pt" --ckpt "SD/checkpoint/path" --prompt "a photo of keyword*"
+python scripts/txt2img_text_inv.py --ddim_eta 0.0 --n_samples 2 --n_iter 2 --scale 10.0 --ddim_steps 50 --embedding_path "/path/to/trained/embedding.pt" --ckpt "SD/checkpoint/path" --prompt "a photo of keyword*"
 ```
 
 img2img + textual inversion (make sure u add a * to the end of ur keyword)

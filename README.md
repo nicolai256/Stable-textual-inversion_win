@@ -19,7 +19,7 @@ new commands are
 
 training (make sure u add a * to the end of ur keyword)
 ```
-python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword*" 
+python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 
 ```
 
 merge trained models together

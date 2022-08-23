@@ -1,12 +1,12 @@
-# windows version of the repo 
-
-# added support for img2img + textual inversion
-start with installing stable diffusion dependencies
 ## changelog:
 - [x] added text weights
 - [x] added support for windows
 - [x] added support for img2img + textual inversion
+- [x] added colab notebook that works on free colab for training textual inversion 
 
+
+
+start with installing stable diffusion dependencies
 
 ```
 conda env create -f environment.yaml

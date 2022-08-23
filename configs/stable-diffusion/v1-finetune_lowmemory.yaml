@@ -74,7 +74,7 @@ data:
   target: main.DataModuleFromConfig
   params:
     batch_size: 1
-    num_workers: 1
+    num_workers: 8
     wrap: false
     train:
       target: ldm.data.personalized.PersonalizedBase
@@ -97,7 +97,7 @@ lightning:
       target: main.ImageLogger
       params:
         batch_frequency: 500
-        max_images: 2
+        max_images: 1
         increase_log_steps: False
 
   trainer:

@@ -36,7 +36,7 @@ img2img + textual inversion
 ```
 python scripts/img2img.py --ddim_eta 0.0 --n_samples 2 --n_iter 2 --scale 10.0 --ddim_steps 50 --embedding_path "/path/to/trained/embedding.pt" --ckpt "SD/checkpoint/path" --prompt "a photo of keyword" --initimg "C:/path/to/init/image" --strength 0.2
 ```
-# colab notebooks
+# colab notebooks (not working yet)
 https://colab.research.google.com/drive/1bnPJzT-dN0DUR50Z3GwtMtTKLm03o2c1?usp=sharing
 # 
 

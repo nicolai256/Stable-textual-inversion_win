@@ -1,5 +1,5 @@
 ## changelog:
-- [x] added text weights
+- [ ] add text weights
 - [x] added support for windows
 - [x] added support for img2img + textual inversion
 - [x] added colab notebook that works on free colab for training textual inversion 

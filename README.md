@@ -50,8 +50,15 @@ https://github.com/GamerUntouch/textual_inversion
 #
 # generating
 **for image easy image generation use this repo (text weights + txt2img + img2img + Textual Inversion all supported at once)**
-https://github.com/nicolai256/stable-diffusion-dream
-
+https://github.com/lstein/stable-diffusion
+windows
+```
+python ./scripts/dream.py --embedding_path /path/to/embedding.pt --full_precision
+```
+linux
+```
+python3 ./scripts/dream.py --embedding_path /path/to/embedding.pt --full_precision
+```
 #
 #
 

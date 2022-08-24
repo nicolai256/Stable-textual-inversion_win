@@ -30,12 +30,12 @@ pip install -e .
 python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 
 ```
 #
+- if u get a out of memory error try ```--base configs/stable-diffusion/v1-finetune_lowmemory.yaml```
 - you can follow the progress of your training by looking at the images in this folder logs/datasetname model time projectname/images.
 - for small datasets 3000-7000 steps are enough, all of this depends depends on the size of the dataset though.
 - it trains forever until u stop it so just stop the training whenever ur happy with the result images in logs/randomname/images
 - u can stop the training by doing Ctrl+C and it will create a checkpoint.
 - you can resume training from that checkpoint (look under this)
-- if u get a out of memory error try --base configs/stable-diffusion/v1-finetune_lowmemory.yaml
 #
 #
 **resuming** (make sure your path is specified like this ```path/path/path``` and not like this ```path\path\path``` when resuming)

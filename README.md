@@ -33,6 +33,9 @@ python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/
 ```
 colab notebook for training (added support for free colab version)
 https://colab.research.google.com/drive/1bnPJzT-dN0DUR50Z3GwtMtTKLm03o2c1?usp=sharing
+
+use this repo for runpod
+https://github.com/GamerUntouch/textual_inversion 
 # 
 #
 # generating

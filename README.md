@@ -3,7 +3,7 @@
 - [x] added support for img2img + textual inversion
 - [x] added colab notebook that works on free colab for training textual inversion 
 - [x] fork stable-diffusion-dream repo to support textual inversion etc.
-- [?] ?
+- [ ] ?
 
 
 start with installing stable diffusion dependencies

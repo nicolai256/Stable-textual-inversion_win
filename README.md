@@ -23,12 +23,12 @@ pip install -e .
 
 
 # training 
-**under 11/12gb vram gpu's will not work *(for now atleast)***
+**under 11/12gb vram gpu's training will not work *(for now atleast)* but you can use the colab notebook linked under this**
 ```
 python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 
 ```
 #
-- you can follow the progress of your training by looking at the images in this folder logs/randomname/images,
+- you can follow the progress of your training by looking at the images in this folder logs/randomname/images.
 - for small datasets 3000-7000 steps are enough, all of this depends depends on the size of the dataset though.
 - it trains forever until u stop it so just stop the training whenever ur happy with the result images in logs/randomname/images
 #

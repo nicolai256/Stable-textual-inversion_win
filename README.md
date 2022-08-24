@@ -21,7 +21,7 @@ pip install torchmetrics==0.6.0
 pip install -e .
 ```
 
-new commands are
+
 # training 
 ```
 python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 

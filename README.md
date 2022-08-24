@@ -31,6 +31,8 @@ python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resu
 - you can follow the progress of your training by looking at the images in this folder logs/randomname/images.
 - for small datasets 3000-7000 steps are enough, all of this depends depends on the size of the dataset though.
 - it trains forever until u stop it so just stop the training whenever ur happy with the result images in logs/randomname/images
+- u can stop the training by doing Ctrl+C and it will create a checkpoint.
+- you can resume training from that checkpoint if you want
 #
 #
 **merge trained models together**

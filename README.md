@@ -26,6 +26,7 @@ new commands are
 ```
 python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 
 ```
+you can follow the progress of your training by looking at the images in this folder logs/randomname/images
 
 merge trained models together
 ```

@@ -1,3 +1,5 @@
+credits for original script go to https://github.com/rinongal/textual_inversion 
+
 ## changelog:
 - [x] added support for windows
 - [x] added support for img2img + textual inversion
@@ -32,7 +34,7 @@ python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resu
 - for small datasets 3000-7000 steps are enough, all of this depends depends on the size of the dataset though.
 - it trains forever until u stop it so just stop the training whenever ur happy with the result images in logs/randomname/images
 - u can stop the training by doing Ctrl+C and it will create a checkpoint.
-- you can resume training from that checkpoint if you want
+- you can resume training from that checkpoint if you want by adding --resume "logs/randomname/checkpoints/whatevercheckpointuwant"
 #
 #
 **merge trained models together**

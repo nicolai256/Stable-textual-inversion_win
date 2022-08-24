@@ -37,6 +37,12 @@ python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resu
 - you can resume training from that checkpoint if you want by adding --resume "logs/randomname/checkpoints/whatevercheckpointuwant"
 #
 #
+**resuming** (make sure your path is specified like this ```path/path/path``` and not like this ```path\path\path``` when resuming)
+```
+python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume models/ldm/stable-diffusion-v1/model.ckpt --gpus 0,  --data_root "C:/path/to/images" --init_word "keyword u used when training" --resume "logs/whateveruwanttoresume/checkpoints/last.ckpt"
+```
+#
+#
 **merge trained models together**
 ```
 python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/second/embedding.pt [...] --output_path /path/to/output/embedding.pt

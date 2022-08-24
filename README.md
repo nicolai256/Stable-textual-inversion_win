@@ -35,6 +35,7 @@ python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resu
 - it trains forever until u stop it so just stop the training whenever ur happy with the result images in logs/randomname/images
 - u can stop the training by doing Ctrl+C and it will create a checkpoint.
 - you can resume training from that checkpoint (look under this)
+- if u get a out of memory error try --base configs/stable-diffusion/v1-finetune_lowmemory.yaml
 #
 #
 **resuming** (make sure your path is specified like this ```path/path/path``` and not like this ```path\path\path``` when resuming)

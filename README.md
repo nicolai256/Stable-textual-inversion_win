@@ -34,7 +34,7 @@ merge trained models together
 ```
 python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/second/embedding.pt [...] --output_path /path/to/output/embedding.pt
 ```
-colab notebook for training (added support for free colab version)
+colab notebook for training if your gpu is not good enough to train, 8gb vram will not work. (free colab version works)
 https://colab.research.google.com/drive/1bnPJzT-dN0DUR50Z3GwtMtTKLm03o2c1?usp=sharing
 
 use this repo for runpod

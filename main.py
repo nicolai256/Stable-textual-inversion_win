@@ -368,6 +368,8 @@ class ImageLogger(Callback):
                   global_step, current_epoch, batch_idx):
         global base_counter
         root = os.path.join(save_dir, "images", split)
+        os.makedirs(os.path.split(os.path.join(root))[0], exist_ok=True)
+        os.makedirs(os.path.split(os.path.join(root, "train", split))[0], exist_ok=True)
         base_counter = len(os.listdir(root)) 
         for k in images:
             grid = torchvision.utils.make_grid(images[k], nrow=4)
@@ -383,7 +385,7 @@ class ImageLogger(Callback):
                 current_epoch,
                 batch_idx,
                 base_counter)
-                
+
             Image.fromarray(grid).save(
                                     os.path.join(root, filename))
             
@@ -810,5 +812,5 @@ if __name__ == "__main__":
             dst = os.path.join(dst, "debug_runs", name)
             os.makedirs(os.path.split(dst)[0], exist_ok=True)
             os.rename(logdir, dst)
-        #if trainer.global_rank == 0:
-        #    print(trainer.profiler.summary())
+        if trainer.global_rank == 0:
+            print(trainer.profiler.summary())

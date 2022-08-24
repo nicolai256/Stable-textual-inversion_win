@@ -2,7 +2,7 @@
 - [x] added support for windows
 - [x] added support for img2img + textual inversion
 - [x] added colab notebook that works on free colab for training textual inversion 
-- [x] fork stable-diffusion-dream repo to support textual inversion etc.
+- [x] made fork stable-diffusion-dream repo to support textual inversion etc.
 - [ ] ?
 
 

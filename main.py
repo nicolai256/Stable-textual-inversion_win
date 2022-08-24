@@ -360,11 +360,15 @@ class ImageLogger(Callback):
             pl_module.logger.experiment.add_image(
                 tag, grid,
                 global_step=pl_module.global_step)
-
+                
+               
+    #base_counter += 1
     @rank_zero_only
     def log_local(self, save_dir, split, images,
                   global_step, current_epoch, batch_idx):
+        global base_counter
         root = os.path.join(save_dir, "images", split)
+        base_counter = len(os.listdir(root)) 
         for k in images:
             grid = torchvision.utils.make_grid(images[k], nrow=4)
             if self.rescale:
@@ -372,14 +376,20 @@ class ImageLogger(Callback):
             grid = grid.transpose(0, 1).transpose(1, 2).squeeze(-1)
             grid = grid.numpy()
             grid = (grid * 255).astype(np.uint8)
-            filename = "{}_gs-{:06}_e-{:06}_b-{:06}.jpg".format(
+            base_counter += 1
+            filename = "{}_gs-{:06}_e-{:06}_b-{:06}_{:08}.png".format(
                 k,
                 global_step,
                 current_epoch,
-                batch_idx)
-            path = os.path.join(root, filename)
-            os.makedirs(os.path.split(path)[0], exist_ok=True)
-            Image.fromarray(grid).save(path)
+                batch_idx,
+                base_counter)
+                
+            Image.fromarray(grid).save(
+                                    os.path.join(root, filename))
+            
+            os.makedirs(os.path.split(os.path.join(root, filename))[0], exist_ok=True)
+            Image.fromarray(grid).save(os.path.join(root, filename))
+            
 
     def log_img(self, pl_module, batch, batch_idx, split="train"):
         check_idx = batch_idx if self.log_on_batch_idx else pl_module.global_step
@@ -700,7 +710,7 @@ if __name__ == "__main__":
                          "filename": "{epoch:06}-{step:09}",
                          "verbose": True,
                          'save_top_k': -1,
-                         'every_n_train_steps': 10000,
+                         'every_n_train_steps': 500,
                          'save_weights_only': True
                      }
                      }

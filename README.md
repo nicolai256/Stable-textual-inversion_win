@@ -13,7 +13,7 @@ conda env create -f environment.yaml
 conda activate ldm
 ```
 
-you need to install a couple extra things on top of stable diffusion env for this to work
+**you need to install a couple extra things on top of the ldm env for this to work
 ```
 pip install setuptools==59.5.0
 pip install pillow==9.0.1
@@ -23,31 +23,33 @@ pip install -e .
 
 
 # training 
+**under 11/12gb vram gpu's will not work (for now atleast)
 ```
 python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 
 ```
+#
 you can follow the progress of your training by looking at the images in this folder logs/randomname/images
 for small datasets 3000-7000 steps are enough, all of this depends depends on the size of the dataset though.
 it trains forever until u stop it so just stop the training whenever ur happy with the result images in logs/randomname/images
 #
 #
-merge trained models together
+**merge trained models together
 ```
 python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/second/embedding.pt [...] --output_path /path/to/output/embedding.pt
 ```
 #
 #
-colab notebook for training if your gpu is not good enough to train, 8gb vram will not work. (free colab version works)
+**colab notebook for training if your gpu is not good enough to train. (free colab version works)
 https://colab.research.google.com/drive/1bnPJzT-dN0DUR50Z3GwtMtTKLm03o2c1?usp=sharing
 #
 #
-use this repo for runpod
+**use this repo for runpod
 https://github.com/GamerUntouch/textual_inversion
 
 # 
 #
 # generating
-for image easy image generation use this repo (text weights + txt2img + img2img + Textual Inversion all supported at once)
+**for image easy image generation use this repo (text weights + txt2img + img2img + Textual Inversion all supported at once)
 https://github.com/nicolai256/stable-diffusion-dream
 
 #

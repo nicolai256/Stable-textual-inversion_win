@@ -39,7 +39,8 @@ https://colab.research.google.com/drive/1bnPJzT-dN0DUR50Z3GwtMtTKLm03o2c1?usp=sh
 for image easy image generation use this repo (text weights + txt2img + img2img + Textual Inversion all supported at once)
 https://github.com/nicolai256/stable-diffusion-dream
 
-
+#
+#
 
 # An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion
 

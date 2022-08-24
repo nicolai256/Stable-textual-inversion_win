@@ -32,8 +32,8 @@ python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resu
 #
 - if u get a out of memory error try ```--base configs/stable-diffusion/v1-finetune_lowmemory.yaml```
 - you can follow the progress of your training by looking at the images in this folder logs/datasetname model time projectname/images.
-- for small datasets 3000-7000 steps are enough, all of this depends depends on the size of the dataset though.
 - it trains forever until u stop it so just stop the training whenever ur happy with the result images in logs/randomname/images
+- for small datasets 3000-7000 steps are enough, all of this depends depends on the size of the dataset though. (check in the images folder to see if it's good)
 - u can stop the training by doing Ctrl+C and it will create a checkpoint.
 - you can resume training from that checkpoint (look under this)
 - results of the resumed checkpoint will be saved in the original checkpoint path but will not export the test images due to there already being test images in there, if you want test images specify a new path with -p logs/newpath

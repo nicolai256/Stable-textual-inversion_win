@@ -32,12 +32,14 @@ merge trained models together
 ```
 python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/second/embedding.pt [...] --output_path /path/to/output/embedding.pt
 ```
-for image easy image generation use this repo (text weights + txt2img + img2img + Textual Inversion all supported at once)
-https://github.com/nicolai256/stable-diffusion-dream
-
 # colab notebook for training (added support for free colab version)
 https://colab.research.google.com/drive/1bnPJzT-dN0DUR50Z3GwtMtTKLm03o2c1?usp=sharing
 # 
+
+# for image easy image generation use this repo (text weights + txt2img + img2img + Textual Inversion all supported at once)
+# https://github.com/nicolai256/stable-diffusion-dream
+
+
 
 # An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion
 

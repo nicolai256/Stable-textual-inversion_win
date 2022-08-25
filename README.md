@@ -1,4 +1,4 @@
-credits for the original script go to https://github.com/rinongal/textual_inversion, my repo is an implementation with stable diffusion
+credits for the original script go to https://github.com/rinongal/textual_inversion, my repo is another implementation
 
 ## changelog:
 - [x] added support for windows

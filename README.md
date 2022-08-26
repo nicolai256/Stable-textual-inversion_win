@@ -45,7 +45,11 @@ python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resu
 ```
 #
 #
-**merge trained models together**(make sure you use different symbols in placeholder_strings: ["*"] (in .yaml file) if u want this) **(not working yet)**
+**merge trained models together**
+
+(make sure you use different symbols in placeholder_strings: ["*"] (in the .yaml file while trainig) if u want to use this)
+
+**(not working yet)**
 ```
 python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/second/embedding.pt [...] --output_path /path/to/output/embedding.pt
 ```

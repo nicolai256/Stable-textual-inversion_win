@@ -1,5 +1,7 @@
 credits for the original script go to https://github.com/rinongal/textual_inversion, my repo is another implementation
 
+please read this tutorial to gain some knowledge on how it works https://www.reddit.com/r/StableDiffusion/comments/wvzr7s/tutorial_fine_tuning_stable_diffusion_using_only/
+
 ## changelog:
 - [x] added support for windows
 - [x] added support for img2img + textual inversion

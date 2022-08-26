@@ -7,7 +7,7 @@ please read this tutorial to gain some knowledge on how it works https://www.red
 - [x] added support for img2img + textual inversion
 - [x] added colab notebook that works on free colab for training textual inversion 
 - [x] made fork stable-diffusion-dream repo to support textual inversion etc.
-- [ ] ?
+- [X] fixed saving last.ckpt and embeddings.pt every 500 steps
 
 
 start with installing stable diffusion dependencies

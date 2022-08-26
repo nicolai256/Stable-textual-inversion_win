@@ -73,8 +73,8 @@ model:
 data:
   target: main.DataModuleFromConfig
   params:
-    batch_size: 2
-    num_workers: 8
+    batch_size: 1
+    num_workers: 16
     wrap: false
     train:
       target: ldm.data.personalized.PersonalizedBase

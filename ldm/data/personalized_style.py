@@ -61,7 +61,7 @@ class PersonalizedBase(Dataset):
                  interpolation="bicubic",
                  flip_p=0.5,
                  set="train",
-                 placeholder_token="%",
+                 placeholder_token="*",
                  per_image_tokens=False,
                  center_crop=False,
                  ):

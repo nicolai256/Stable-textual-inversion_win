@@ -1,4 +1,4 @@
-from ldm.modules.encoders.modules import BERTTokenizer
+from ldm.modules.encoders.modules import BERTTokenizer, BERTEmbedder
 from ldm.modules.embedding_manager import EmbeddingManager
 
 import argparse, os
@@ -7,9 +7,9 @@ from functools import partial
 import torch
 
 def get_placeholder_loop(placeholder_string, tokenizer):
-    
+
     new_placeholder   = None
-    
+
     while True:
         if new_placeholder is None:
             new_placeholder = input(f"Placeholder string {placeholder_string} was already used. Please enter a replacement string: ")
@@ -26,9 +26,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "--manager_ckpts", 
-        type=str, 
-        nargs="+", 
+        "--manager_ckpts",
+        type=str,
+        nargs="+",
         required=True,
         help="Paths to a set of embedding managers to be merged."
     )
@@ -43,9 +43,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     tokenizer = BERTTokenizer(vq_interface=False, max_length=77)
-    EmbeddingManager = partial(EmbeddingManager, tokenizer, ["*"])
+    embedder = BERTEmbedder(n_embed=1280, n_layer=32, vocab_size=30522, max_seq_len=77)
+    EmbeddingManager = partial(EmbeddingManager, embedder, ["*"])
 
-    string_to_token_dict = {}    
+    string_to_token_dict = {}
     string_to_param_dict = torch.nn.ParameterDict()
 
     placeholder_to_src = {}
@@ -77,7 +78,3 @@ if __name__ == "__main__":
 
     print("Managers merged. Final list of placeholders: ")
     print(placeholder_to_src)
-
-
-
-                

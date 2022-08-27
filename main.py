@@ -642,6 +642,7 @@ if __name__ == "__main__":
             "params": {
                 "dirpath": ckptdir,
                 "filename": "{epoch:06}",
+                "every_n_train_steps": 500,
                 "verbose": True,
                 "save_last": True,
             }

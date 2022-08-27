@@ -83,7 +83,7 @@ class PersonalizedBase(Dataset):
                  interpolation="bicubic",
                  flip_p=0.5,
                  set="train",
-                 placeholder_token="*",
+                 placeholder_token="%",
                  per_image_tokens=False,
                  center_crop=False,
                  mixing_prob=0.25,
@@ -96,7 +96,7 @@ class PersonalizedBase(Dataset):
 
         # self._length = len(self.image_paths)
         self.num_images = len(self.image_paths)
-        self._length = self.num_images 
+        self._length = self.num_images
 
         self.placeholder_token = placeholder_token
 
@@ -127,23 +127,34 @@ class PersonalizedBase(Dataset):
         example = {}
         image = Image.open(self.image_paths[i % self.num_images])
 
-        if not image.mode == "RGB":
-            image = image.convert("RGB")
-
         placeholder_string = self.placeholder_token
         if self.coarse_class_text:
             placeholder_string = f"{self.coarse_class_text} {placeholder_string}"
 
-        if self.per_image_tokens and np.random.uniform() < self.mixing_prob:
-            text = random.choice(imagenet_dual_templates_small).format(placeholder_string, per_img_token_list[i % self.num_images])
-        else:
-            text = random.choice(imagenet_templates_small).format(placeholder_string)
-            
+        image = image.convert('RGBA')
+        new_image = Image.new('RGBA', image.size, 'WHITE')
+        new_image.paste(image, (0, 0), image)
+        image = new_image.convert('RGB')
+
+        templates = [
+            'an image of {} in style of {}',
+            'a pretty picture of {} in style of {}',
+            'a clip art picture of {} in style of {}',
+            'an illustration of {} in style of {}',
+            'an icon with {} in style of {}',
+        ]
+
+        filename = os.path.basename(self.image_paths[i % self.num_images])
+        filename_tokens = os.path.splitext(filename)[0].replace(' ', '-').replace('_', '-').split('-')
+        filename_tokens = [token for token in filename_tokens if token.isalpha()]
+
+        text = random.choice(templates).format(' '.join(filename_tokens), self.placeholder_token)
+
         example["caption"] = text
 
         # default to score-sde preprocessing
         img = np.array(image).astype(np.uint8)
-        
+
         if self.center_crop:
             crop = min(img.shape[0], img.shape[1])
             h, w, = img.shape[0], img.shape[1]

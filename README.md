@@ -29,7 +29,14 @@ pip install -e .
 # training 
 **under 11/12gb vram gpu's training will not work *(for now atleast)* but you can use the colab notebook linked under this**
 ```
-python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume "SD/checkpoint/path" -n "projectname" --gpus 0,  --data_root "C:\path\to\images" --init_word "keyword" 
+python main.py \
+ --base configs/stable-diffusion/v1-finetune.yaml \
+ -t --no-test \
+ --actual_resume "SD/checkpoint/path" \
+ --gpus 0,  \
+ --data_root "C:\path\to\images" \
+ --init_word "keyword" \
+ -n "projectname" \
 ```
 #
 - if u get a out of memory error try ```--base configs/stable-diffusion/v1-finetune_lowmemory.yaml```
@@ -41,9 +48,19 @@ python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resu
 - results of the resumed checkpoint will be saved in the original checkpoint path but will not export the test images due to there already being test images in there, if you want test images specify a new path with -p logs/newpath
 #
 #
-**resuming** (make sure your path is specified like this ```path/path/path``` and not like this ```path\path\path``` when resuming)**(not working yet)**
+**resuming** (make sure your path is specified like this ```path/path/path``` and not like this ```path\path\path``` when resuming)
 ```
-python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume models/ldm/stable-diffusion-v1/model.ckpt --gpus 0,  --data_root "C:/path/to/images" --init_word "keyword u used when training" --resume "logs/datasetname model time projectname/checkpoints/last.ckpt -l logs"
+!python "main.py" \
+ --base "configs/stable-diffusion/v1-finetune.yaml" \
+ -t --no-test \
+ --actual_resume " models/ldm/stable-diffusion-v1/model.ckpt" \
+ --gpus 0 \
+ --data_root "C:/path/to/training/images" \
+ --init_word "keyword u used when training" \
+ --project "logs/training images2022-08-28T07-55-48_myProjectName" \
+ --embedding_manager_ckpt ""logs/datasetname model time projectname/checkpoints/embeddings.pt" \
+ --resume_from_checkpoint "logs/datasetname model time projectname/checkpoints/last.ckpt" \
+ -n "myProjectName2"
 ```
 #
 #
@@ -51,7 +68,6 @@ python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resu
 
 (make sure you use different symbols in placeholder_strings: ["*"] (in the .yaml file while trainig) if u want to use this)
 
-**(not working yet)**
 ```
 python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/second/embedding.pt [...] --output_path /path/to/output/embedding.pt
 ```

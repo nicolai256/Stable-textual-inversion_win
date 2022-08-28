@@ -8,6 +8,8 @@ please read this tutorial to gain some knowledge on how it works https://www.red
 - [x] added colab notebook that works on free colab for training textual inversion 
 - [x] made fork stable-diffusion-dream repo to support textual inversion etc.
 - [X] fixed saving last.ckpt and embeddings.pt every 500 steps
+- [X] fixed merge_embeddings.pt
+- [X] fixed resuming training
 
 
 start with installing stable diffusion dependencies

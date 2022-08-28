@@ -29,7 +29,7 @@ pip install -e .
 
 
 # training 
-**under 11/12gb vram gpu's training will not work *(for now atleast)* but you can use the colab notebook linked under this**
+**under 11/12gb vram gpu's training will not work *(for now atleast)* but you can use the colab notebook (you'll see it when u scroll down)**
 ```
 python main.py \
  --base configs/stable-diffusion/v1-finetune.yaml \

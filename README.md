@@ -31,7 +31,7 @@ pip install -e .
 # training 
 **under 11/12gb vram gpu's training will not work *(for now atleast)* but you can use the colab notebook (you'll see it when u scroll down)**
 
-**to pause training you can double click your command prompt**
+**to pause training you can double click inside your command prompt**
 ```
 python main.py \
  --base configs/stable-diffusion/v1-finetune.yaml \

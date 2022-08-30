@@ -10,7 +10,7 @@ please read this tutorial to gain some knowledge on how it works https://www.red
 - [X] fixed saving last.ckpt and embeddings.pt every 500 steps
 - [X] fixed merge_embeddings.pt
 - [X] fixed resuming training
-
+- [X] added squarize outpainting images
 
 start with installing stable diffusion dependencies
 
@@ -78,7 +78,7 @@ python merge_embeddings.py --manager_ckpts /path/to/first/embedding.pt /path/to/
 #
 #
 **colab notebook for training if your gpu is not good enough to train. (free colab version works)**
-https://colab.research.google.com/drive/1bnPJzT-dN0DUR50Z3GwtMtTKLm03o2c1?usp=sharing
+https://colab.research.google.com/drive/1MggyUS5BWyNdoXpzGkroKgVoKlqJm7vI?usp=sharing
 #
 #
 **use this repo for runpod**

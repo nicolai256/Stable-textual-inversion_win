@@ -15,14 +15,16 @@ model:
     conditioning_key: crossattn
     monitor: val/loss_simple_ema
     scale_factor: 0.18215
-    use_ema: False
+    use_ema: false
     embedding_reg_weight: 0.0
+    unfreeze_model: True
+    model_lr: 1.0e-7
 
     personalization_config:
       target: ldm.modules.embedding_manager.EmbeddingManager
       params:
-        placeholder_strings: ["*"]
-        initializer_words: ["sculpture"]
+        placeholder_strings: ["*"] #  * & ^ % @
+        initializer_words: ["ophanim"]
         per_image_tokens: false
         num_vectors_per_token: 1
         progressive_words: False
@@ -73,8 +75,8 @@ model:
 data:
   target: main.DataModuleFromConfig
   params:
-    batch_size: 2
-    num_workers: 2
+    batch_size: 1
+    num_workers: 16
     wrap: false
     train:
       target: ldm.data.personalized.PersonalizedBase
@@ -92,6 +94,9 @@ data:
         repeats: 10
 
 lightning:
+  modelcheckpoint:
+    params:
+      every_n_train_steps: 500
   callbacks:
     image_logger:
       target: main.ImageLogger
@@ -102,4 +107,5 @@ lightning:
 
   trainer:
     benchmark: True
-    max_steps: 6100
+    max_steps: 100000
+    find_unused_parameters: False

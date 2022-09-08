@@ -1,5 +1,5 @@
 model:
-  base_learning_rate: 5.0e-03
+  base_learning_rate: 5.0e-04
   target: ldm.models.diffusion.ddpm.LatentDiffusion
   params:
     linear_start: 0.00085

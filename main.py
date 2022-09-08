@@ -24,7 +24,7 @@ from ldm.util import instantiate_from_config
 import os
 os.environ["PL_TORCH_DISTRIBUTED_BACKEND"] = "gloo"
 #PL_TORCH_DISTRIBUTED_BACKEND=gloo
-
+torch.autograd.set_detect_anomaly(True)
 def get_font(txt, img_fraction=0.05):
     font = ImageFont.truetype("/Library/fonts/Arial.ttf", fontsize)
 #############################################
@@ -469,6 +469,22 @@ class CUDACallback(Callback):
             rank_zero_info(f"Average Peak memory {max_memory:.2f}MiB")
         except AttributeError:
             pass
+            
+class ModeSwapCallback(Callback):
+
+    def __init__(self, swap_step=2000):
+        super().__init__()
+        self.is_frozen = False
+        self.swap_step = swap_step
+
+    def on_train_epoch_start(self, trainer, pl_module):
+        if trainer.global_step < self.swap_step and not self.is_frozen:
+            self.is_frozen = True
+            trainer.optimizers = [pl_module.configure_opt_embedding()]
+
+        if trainer.global_step > self.swap_step and self.is_frozen:
+            self.is_frozen = False
+            trainer.optimizers = [pl_module.configure_opt_model()]
 
 
 if __name__ == "__main__":
@@ -634,6 +650,9 @@ if __name__ == "__main__":
             logger_cfg = OmegaConf.create()
         logger_cfg = OmegaConf.merge(default_logger_cfg, logger_cfg)
         trainer_kwargs["logger"] = instantiate_from_config(logger_cfg)
+        
+        #global base_counter
+        #base_counter += 1
 
         # modelcheckpoint - use TrainResult/EvalResult(checkpoint_on=metric) to
         # specify which metric is used to determine best models
@@ -641,7 +660,7 @@ if __name__ == "__main__":
             "target": "pytorch_lightning.callbacks.ModelCheckpoint",
             "params": {
                 "dirpath": ckptdir,
-                "filename": "{epoch:06}",
+                "filename": "gs-{global_step:06}_e-{epoch:06}",
                 "every_n_train_steps": 500,
                 "verbose": True,
                 "save_last": True,
@@ -727,7 +746,7 @@ if __name__ == "__main__":
             del callbacks_cfg['ignore_keys_callback']
 
         trainer_kwargs["callbacks"] = [instantiate_from_config(callbacks_cfg[k]) for k in callbacks_cfg]
-        trainer_kwargs["max_steps"] = opt.max_steps
+        trainer_kwargs["max_steps"] = trainer_opt.max_steps
 
         trainer = Trainer.from_argparse_args(trainer_opt, **trainer_kwargs)
         trainer.logdir = logdir  ###
@@ -751,6 +770,11 @@ if __name__ == "__main__":
         bs, base_lr = config.data.params.batch_size, config.model.base_learning_rate
         if not cpu:
             #ngpu = len(lightning_config.trainer.gpus.strip(",").split(','))
+            if isinstance(lightning_config.trainer.gpus, int):
+                ngpu = lightning_config.trainer.gpus
+            else:
+                ngpu = len(lightning_config.trainer.gpus.strip(",").split(','))
+        else:
             ngpu = 1
         if 'accumulate_grad_batches' in lightning_config.trainer:
             accumulate_grad_batches = lightning_config.trainer.accumulate_grad_batches

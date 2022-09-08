@@ -137,11 +137,13 @@ class PersonalizedBase(Dataset):
         image = new_image.convert('RGB')
 
         templates = [
-            'an image of {} in style of {}',
-            'a pretty picture of {} in style of {}',
-            'a clip art picture of {} in style of {}',
-            'an illustration of {} in style of {}',
-            'an icon with {} in style of {}',
+            'a {} portrait of {}',
+            'an {} image of {}',
+            'a {} pretty picture of {}',
+            'a {} clip art picture of {}',
+            'an {} illustration of {}',
+            'a {} 3D render of {}',
+            'a {} {}',
         ]
 
         filename = os.path.basename(self.image_paths[i % self.num_images])
